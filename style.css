@@ -1,0 +1,115 @@
+/* Estilos de los titulos h1, h2 */
+h1,
+h2 {
+    text-align: center;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 0%;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+/* Estilos de la imagen */
+.imagen-mia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.imagen-yo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de los parrafos*/
+.parrafos {
+    text-align: justify;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #c8e6c9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de las redes sociales */
+.Redes-sociales {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.boton-red {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.boton-red:hover {
+    background-color: #4CAF50;
+    transform: scale(1.05);
+}
+
+
+/* Estilos de las listas */
+.listas {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.lista-desordenada,
+.lista-ordenada {
+    background-color: #c8e6c9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: justify;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de las tablas */
+.tabla-horario {
+    margin-top: 30px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+}
+
+th,
+td {
+    border: 2px solid #888;
+    border-color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tbody th {
+    background-color: #c8e6c9;
+}
