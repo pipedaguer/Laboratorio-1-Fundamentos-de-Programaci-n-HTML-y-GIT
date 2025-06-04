@@ -28,6 +28,7 @@
     <div class="imagen-mia">
         <img class="imagen-yo" src="SoYo.jpg" alt="SoyYo" />
     </div><br>
+    
     <!-- PARRAFOS, VOY USAR CLASES CON DIVISIONES (DIV) PARA ESTILIZAR DE MANERA ORGANIZADA -->
     <div class="parrafos">
         <h2>
@@ -59,6 +60,7 @@
         <a href="https://www.instagram.com/pipedaguer/" target="_blank" class="boton-red">INSTAGRAM</a>
 
     </div>
+
     <!-- LISTA DESORDENADA Y ORDENADA, VOY USAR CLASES CON DIVISIONES (DIV) PARA ESTILIZAR DE MANERA ORGANIZADA -->
     <div class="listas">
         <div class="lista-desordenada">
@@ -79,6 +81,7 @@
             </ol>
         </div>
     </div>
+
     <!-- TABLA, VOY USAR CLASES CON DIVISIONES (DIV) PARA ESTILIZAR DE MANERA ORGANIZADA, LA TABLA VA DENTRO DE UNA SECCIÓN -->
     <section>
         <div class="tabla-horario">
@@ -122,7 +125,60 @@
                 </tbody>
             </table>
         </div>
+    <br><br>
+
+    <!-- FORMULARIO -->
+     <h2>FORMULARIO DE CONTACTO</h2>
+    <form id="formulario-contacto">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="motivo">Motivo de contacto:</label>
+        <input type="text" id="motivo" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" required>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script>
+        const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzB6JlGZfrYNe0YQOCD32INX_Oh_x0n3jskGo3AG6ypBlPni7pCFUGAew6PXuEcEpJdug/exec; // <- pega la URL aquí";
+
+        document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const datos = {
+                nombre: document.getElementById("nombre").value,
+                motivo: document.getElementById("motivo").value,
+                correo: document.getElementById("correo").value
+            };
+
+            fetch(URL_SCRIPT, {
+                method: "POST",
+                body: JSON.stringify(datos),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then(res => res.json())
+                .then(respuesta => {
+                    document.getElementById("mensaje").textContent = respuesta.mensaje;
+                })
+                .catch(error => {
+                    document.getElementById("mensaje").textContent = "Ocurrió un error";
+                    console.error(error);
+                });
+
+            this.reset();
+        });
+    </script>
+    <section>
+        <footer>
+            By A.F.D.P
+        </footer>
     </section>
+
 </body>
 
 </html>
