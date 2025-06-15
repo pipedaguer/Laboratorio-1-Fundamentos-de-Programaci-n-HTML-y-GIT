@@ -28,7 +28,7 @@
     <div class="imagen-mia">
         <img class="imagen-yo" src="SoYo.jpg" alt="SoyYo" />
     </div><br>
-    
+
     <!-- PARRAFOS, VOY USAR CLASES CON DIVISIONES (DIV) PARA ESTILIZAR DE MANERA ORGANIZADA -->
     <div class="parrafos">
         <h2>
@@ -125,59 +125,54 @@
                 </tbody>
             </table>
         </div>
-    <br><br>
+        <br><br>
 
-    <!-- FORMULARIO -->
-     <h2>FORMULARIO DE CONTACTO</h2>
-    <form id="formulario-contacto">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" required>
+        <!-- FORMULARIO, SE USA ID PARA LOS ESTILOS-->
+        <h2>FORMULARIO DE CONTACTO</h2>
+        <form id="formulario-contacto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
 
-        <label for="motivo">Motivo de contacto:</label>
-        <input type="text" id="motivo" required>
+            <label for="motivo">Motivo de contacto:</label>
+            <input type="text" id="motivo" required>
 
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" required>
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" required>
 
-        <input type="submit" value="Enviar">
-    </form>
+            <input type="submit" value="Enviar">
+        </form>
 
-    <p id="mensaje"></p>
+        <p id="mensaje"></p>
 
-    <script>
-        const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzB6JlGZfrYNe0YQOCD32INX_Oh_x0n3jskGo3AG6ypBlPni7pCFUGAew6PXuEcEpJdug/exec; // <- pega la URL aquí";
+        <script>
+            const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbx24-CaZkocWoABnJSpMvX4ys8qfgPrzOm9pGbrGULvZDAuIzxVQp-92oVpg8rW1yFp/exec";
 
-        document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
-            e.preventDefault();
+            document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
+                e.preventDefault();
 
-            const datos = {
-                nombre: document.getElementById("nombre").value,
-                motivo: document.getElementById("motivo").value,
-                correo: document.getElementById("correo").value
-            };
+                const datos = {
+                    nombre: document.getElementById("nombre").value,
+                    motivo: document.getElementById("motivo").value,
+                    correo: document.getElementById("correo").value
+                };
 
-            fetch(URL_SCRIPT, {
-                method: "POST",
-                body: JSON.stringify(datos),
-                headers: { "Content-Type": "application/json" }
-            })
-                .then(res => res.json())
-                .then(respuesta => {
-                    document.getElementById("mensaje").textContent = respuesta.mensaje;
+                fetch(URL_SCRIPT, {
+                    method: "POST",
+                    body: JSON.stringify(datos),
+                    headers: { "Content-Type": "application/json" }
                 })
-                .catch(error => {
-                    document.getElementById("mensaje").textContent = "Ocurrió un error";
-                    console.error(error);
-                });
+                    .then(res => res.json())
+                    .then(respuesta => {
+                        document.getElementById("mensaje").textContent = respuesta.mensaje;
+                    })
+                    .catch(error => {
+                        document.getElementById("mensaje").textContent = "Ocurrió un error";
+                        console.error(error);
+                    });
 
-            this.reset();
-        });
-    </script>
-    <section>
-        <footer>
-            By A.F.D.P
-        </footer>
-    </section>
+                this.reset();
+            });
+        </script>
 
 </body>
 
