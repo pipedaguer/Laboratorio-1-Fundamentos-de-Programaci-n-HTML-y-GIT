@@ -140,40 +140,45 @@
             <input type="email" id="correo" required>
 
             <input type="submit" value="Enviar">
+
+            <p id="mensaje-error" style="color: red; margin-top: 10px;"></p>
+            <p id="mensaje-exito" style="color: green; margin-top: 10px;"></p>
         </form>
 
-        <p id="mensaje"></p>
 
         <script>
-            const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbx24-CaZkocWoABnJSpMvX4ys8qfgPrzOm9pGbrGULvZDAuIzxVQp-92oVpg8rW1yFp/exec";
+            document.getElementById("formulario-contacto").addEventListener("submit", function (event) {
+                event.preventDefault();
 
-            document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
-                e.preventDefault();
+                // Obtener valores
+                const nombre = document.getElementById("nombre").value.trim();
+                const motivo = document.getElementById("motivo").value.trim();
+                const correo = document.getElementById("correo").value.trim();
 
-                const datos = {
-                    nombre: document.getElementById("nombre").value,
-                    motivo: document.getElementById("motivo").value,
-                    correo: document.getElementById("correo").value
-                };
+                const mensajeError = document.getElementById("mensaje-error");
+                const mensajeExito = document.getElementById("mensaje-exito");
 
-                fetch(URL_SCRIPT, {
-                    method: "POST",
-                    body: JSON.stringify(datos),
-                    headers: { "Content-Type": "application/json" }
-                })
-                    .then(res => res.json())
-                    .then(respuesta => {
-                        document.getElementById("mensaje").textContent = respuesta.mensaje;
-                    })
-                    .catch(error => {
-                        document.getElementById("mensaje").textContent = "Ocurrió un error";
-                        console.error(error);
-                    });
+                // Limpiar mensajes previos
+                mensajeError.textContent = "";
+                mensajeExito.textContent = "";
 
+                // Validaciones
+                if (nombre === "" || motivo === "" || correo === "") {
+                    mensajeError.textContent = "Todos los campos son obligatorios.";
+                    return;
+                }
+
+                const correoValido = /^\S+@\S+\.\S+$/;
+                if (!correoValido.test(correo)) {
+                    mensajeError.textContent = "El correo electrónico no es válido.";
+                    return;
+                }
+
+                // Si pasa validación
+                mensajeExito.textContent = "Formulario enviado correctamente.";
                 this.reset();
             });
         </script>
-
 </body>
 
 </html>
